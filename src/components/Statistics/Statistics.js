@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Notification from './Notification/Notification';
+import styles from './Statistics.module.css';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return total ? (
-    <ul>
-      <li>
+    <ul className={styles.list}>
+      <li className={styles.item}>
         Good: <span>{good}</span>
       </li>
-      <li>
+      <li className={styles.item}>
         Neutral: <span>{neutral}</span>
       </li>
-      <li>
+      <li className={styles.item}>
         Bad: <span>{bad}</span>
       </li>
-      <li>
+      <li className={styles.item}>
         total: <span>{total}</span>
       </li>
-      <li>
+      <li className={styles.item}>
         positivePercentage: <span>{positivePercentage}</span>
       </li>
     </ul>
