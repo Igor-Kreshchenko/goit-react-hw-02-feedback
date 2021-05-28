@@ -13,6 +13,7 @@ class App extends Component {
 
   btnClickHandler = e => {
     const target = e.target.name;
+
     this.setState(prevState => ({ [target]: prevState[target] + 1 }));
   };
 
@@ -25,9 +26,8 @@ class App extends Component {
 
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
-    const positiveFeedback = Math.round(
-      (good / this.countTotalFeedback()) * 100,
-    );
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedback = Math.round((good / totalFeedback) * 100);
 
     return positiveFeedback ? positiveFeedback : 0;
   };
