@@ -3,24 +3,16 @@ import PropTypes from 'prop-types';
 import Notification from './Notification';
 import styles from './Statistics.module.css';
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
-  return total ? (
+const Statistics = props => {
+  const propNames = Object.keys(props);
+
+  return props.total ? (
     <ul className={styles.list}>
-      <li className={styles.item}>
-        Good: <span>{good}</span>
-      </li>
-      <li className={styles.item}>
-        Neutral: <span>{neutral}</span>
-      </li>
-      <li className={styles.item}>
-        Bad: <span>{bad}</span>
-      </li>
-      <li className={styles.item}>
-        Total: <span>{total}</span>
-      </li>
-      <li className={styles.item}>
-        Positive percentage: <span>{positivePercentage}</span>
-      </li>
+      {propNames.map(propName => (
+        <li className={styles.item} key={propName}>
+          {propName}: <span>{props[propName]}</span>
+        </li>
+      ))}
     </ul>
   ) : (
     <Notification message="No feedback given" />
@@ -38,9 +30,11 @@ Statistics.defaultProps = {
 };
 
 Statistics.propTypes = {
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-  total: PropTypes.number,
-  positivePercentage: PropTypes.number,
+  props: PropTypes.shape({
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    total: PropTypes.number,
+    positivePercentage: PropTypes.number,
+  }),
 };
