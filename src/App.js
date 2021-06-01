@@ -10,10 +10,8 @@ class App extends Component {
     bad: 0,
   };
 
-  btnClickHandler = e => {
-    const target = e.target.name;
-
-    this.setState(prevState => ({ [target]: prevState[target] + 1 }));
+  btnClickHandler = ({ target: name }) => {
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
 
   countTotalFeedback = () => {
